@@ -140,7 +140,7 @@ REST_FRAMEWORK = {
 # CORS settings for production
 if ENVIRONMENT == 'production':
     CORS_ALLOWED_ORIGINS = [
-        "https://your-vercel-app.vercel.app",  # Replace with your actual Vercel URL
+        "https://material-access-portal.vercel.app",
     ]
     CORS_ALLOW_CREDENTIALS = True
 else:
