@@ -1,15 +1,18 @@
+
 from django.urls import path
 from . import views
 
 urlpatterns = [
     # Authentication
-    path('auth/register/', views.RegisterView.as_view(), name='register'),
-    path('auth/user/', views.current_user, name='current-user'),
+    path('auth/register/', views.UserRegistrationView.as_view(), name='user-register'),
+    path('user/profile/', views.UserProfileView.as_view(), name='user-profile'),
     
-    # Gate Pass Management
+    # Gate Pass CRUD
     path('gatepasses/', views.GatePassListCreateView.as_view(), name='gatepass-list-create'),
-    path('gatepass/<int:pk>/', views.GatePassUpdateView.as_view(), name='gatepass-update'),
+    path('gatepasses/<int:pk>/', views.GatePassDetailView.as_view(), name='gatepass-detail'),
+    path('gatepasses/<int:pk>/update-status/', views.GatePassUpdateStatusView.as_view(), name='gatepass-update-status'),
     
-    # Dashboard
-    path('dashboard/stats/', views.dashboard_stats, name='dashboard-stats'),
+    # Debug & Health Check (BONUS)
+    path('debug-user/', views.debug_user_info, name='debug-user'),
+    path('health/', views.health_check, name='health-check'),
 ]
